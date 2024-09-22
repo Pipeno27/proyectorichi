@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddj0esght23pd"]
+
+[ext_resource type="Texture2D" uid="uid://nfvpmuf8ablq" path="res://pelota futbol.png" id="1_qpt7b"]
+[ext_resource type="Script" path="res://pelota.gd" id="1_wg2c5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqq0d"]
+radius = 519.252
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_wg2c5")
+
+[node name="PelotaFutbol" type="Sprite2D" parent="."]
+position = Vector2(-9.79901, 13.3431)
+rotation = 0.00910248
+scale = Vector2(0.103894, 0.091575)
+texture = ExtResource("1_qpt7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.79901, 13.3431)
+rotation = 0.00910248
+scale = Vector2(0.103894, 0.091575)
+shape = SubResource("CircleShape2D_rqq0d")

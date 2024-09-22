@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d36jl5ot7yq0e"]
+
+[ext_resource type="Texture2D" uid="uid://cc4d25x2gprh" path="res://descarga.png" id="1_cnqm6"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_mj08v"]
+[ext_resource type="Texture2D" uid="uid://br03koe0dp3pr" path="res://botin de futbol.jpeg.png" id="1_v60x6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kaqt5"]
+radius = 60.0
+height = 126.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7lwm"]
+radius = 40.0383
+height = 188.995
+
+[node name="Personaje JP" type="CharacterBody2D"]
+script = ExtResource("1_mj08v")
+
+[node name="Zapato" type="Sprite2D" parent="."]
+position = Vector2(-438.25, 106)
+scale = Vector2(0.661667, 0.577778)
+texture = ExtResource("1_v60x6")
+
+[node name="Cabeza" type="Sprite2D" parent="."]
+position = Vector2(-486.492, 18.5001)
+scale = Vector2(2.83641, 1.82105)
+texture = ExtResource("1_cnqm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-489, 6)
+shape = SubResource("CapsuleShape2D_kaqt5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-438, 111)
+rotation = 1.59662
+scale = Vector2(1, 1.04)
+shape = SubResource("CapsuleShape2D_e7lwm")

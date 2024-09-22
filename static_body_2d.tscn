@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://4rdekbk8rrts"]
+
+[ext_resource type="Texture2D" uid="uid://bmd3s7ixb0uu2" path="res://claro ksi - copia.png" id="1_cnsx7"]
+[ext_resource type="Script" path="res://static_body_2d.gd" id="1_uqixf"]
+[ext_resource type="Script" path="res://claro_ksi_copia.gd" id="2_w4884"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwhnw"]
+size = Vector2(230.75, 376.002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3swdq"]
+size = Vector2(171.516, 325.064)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i2mlq"]
+a = Vector2(-789, -147)
+b = Vector2(-712, -84)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tvdgb"]
+a = Vector2(861, -222)
+b = Vector2(773, -162)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_uqixf")
+
+[node name="ClaroKsi-Copia" type="Sprite2D" parent="."]
+position = Vector2(-845.25, -18.875)
+scale = Vector2(1.329, 1.3605)
+texture = ExtResource("1_cnsx7")
+script = ExtResource("2_w4884")
+
+[node name="ClaroKsi-Copia2" type="Sprite2D" parent="."]
+position = Vector2(907.423, -20.9917)
+rotation = -0.0144256
+scale = Vector2(-1.38193, 1.35325)
+texture = ExtResource("1_cnsx7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(983, -26)
+scale = Vector2(1, 0.999996)
+shape = SubResource("RectangleShape2D_kwhnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-918, -24)
+scale = Vector2(1.306, 1.169)
+shape = SubResource("RectangleShape2D_3swdq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_i2mlq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_tvdgb")

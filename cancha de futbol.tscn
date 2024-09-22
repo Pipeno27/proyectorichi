@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsdae7hwgiy02"]
+
+[ext_resource type="Texture2D" uid="uid://djk726uqmu7a" path="res://cancha futbol.png" id="1_3huwb"]
+[ext_resource type="Script" path="res://cancha_de_futbol.gd" id="1_7a2ss"]
+[ext_resource type="PackedScene" uid="uid://bebo1jblusvnt" path="res://fondo.tscn" id="2_5td45"]
+[ext_resource type="PackedScene" uid="uid://4rdekbk8rrts" path="res://static_body_2d.tscn" id="3_q62we"]
+[ext_resource type="PackedScene" uid="uid://dqdk70kl2247g" path="res://mauri.tscn" id="4_00ekg"]
+[ext_resource type="PackedScene" uid="uid://d36jl5ot7yq0e" path="res://character_body_2d.tscn" id="5_aiu17"]
+[ext_resource type="PackedScene" uid="uid://ddj0esght23pd" path="res://pelota.tscn" id="7_55471"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no13m"]
+size = Vector2(2319.5, 161)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_7a2ss")
+
+[node name="Node2D" parent="." instance=ExtResource("2_5td45")]
+position = Vector2(-41, -542)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CanchaFutbol" type="Sprite2D" parent="."]
+position = Vector2(41.0009, -170)
+scale = Vector2(2.53043, 2.47126)
+texture = ExtResource("1_3huwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(37.25, 183)
+shape = SubResource("RectangleShape2D_no13m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(30, -378)
+zoom = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_q62we")]
+position = Vector2(1, -93)
+
+[node name="Personaje Mauri" parent="." instance=ExtResource("4_00ekg")]
+position = Vector2(41, -51)
+
+[node name="Personaje JP" parent="." instance=ExtResource("5_aiu17")]
+position = Vector2(-126, -47)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("7_55471")]
+position = Vector2(15, -22)

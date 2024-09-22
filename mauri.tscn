@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqdk70kl2247g"]
+
+[ext_resource type="Script" path="res://mauri.gd" id="1_hrokm"]
+[ext_resource type="Texture2D" uid="uid://br03koe0dp3pr" path="res://botin de futbol.jpeg.png" id="2_bx1l4"]
+[ext_resource type="Texture2D" uid="uid://dntsgyomqvv80" path="res://0.png" id="3_b62w1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k0vj"]
+radius = 47.0
+height = 148.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i8xwp"]
+radius = 82.4999
+height = 221.666
+
+[node name="Personaje Mauri" type="CharacterBody2D"]
+script = ExtResource("1_hrokm")
+
+[node name="Zapato" type="Sprite2D" parent="."]
+position = Vector2(438, 100)
+rotation = 3.14159
+scale = Vector2(0.637157, -0.63859)
+texture = ExtResource("2_bx1l4")
+
+[node name="Cabeza" type="Sprite2D" parent="."]
+position = Vector2(496, -22.5)
+scale = Vector2(0.491726, 0.450237)
+texture = ExtResource("3_b62w1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(490, 0)
+shape = SubResource("CapsuleShape2D_4k0vj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(443, 104)
+scale = Vector2(-1.2, 0.4)
+shape = SubResource("CapsuleShape2D_i8xwp")
