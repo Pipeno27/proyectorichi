@@ -1,4 +1,4 @@
-print("En suelo: ", is_on_floor())
+extends CharacterBody2D
 
 # Variables de configuración
 var salto_velocidad = -600 # Velocidad inicial del salto (negativa para ir arriba)
@@ -28,7 +28,7 @@ func _process(delta):
 	direccion = direccion.normalized() * velocidad
 
 	# Usa move_and_slide con el vector de velocidad
-	move_and_slide(direccion)
+	move_and_slide()
 
 	# Verifica si el personaje está en el suelo
 	if is_on_floor():
