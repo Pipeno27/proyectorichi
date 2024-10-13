@@ -1,22 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddj0esght23pd"]
+[gd_scene load_steps=8 format=3 uid="uid://ddj0esght23pd"]
 
 [ext_resource type="Texture2D" uid="uid://nfvpmuf8ablq" path="res://pelota futbol.png" id="1_qpt7b"]
 [ext_resource type="Script" path="res://pelota.gd" id="1_wg2c5"]
+[ext_resource type="Script" path="res://area_2d.gd" id="3_ce75w"]
+[ext_resource type="Script" path="res://pelota_futbol.gd" id="3_y56r2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rqq0d"]
-radius = 519.252
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k1vsh"]
+friction = 0.2
+bounce = 0.86
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_41gn6"]
+radius = 55.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rbc0"]
+radius = 54.8179
+
+[node name="Pelota" type="RigidBody2D" groups=["Pelota"]]
+process_mode = 1
+process_physics_priority = 2
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+disable_mode = 2
+mass = 0.7
+physics_material_override = SubResource("PhysicsMaterial_k1vsh")
+center_of_mass_mode = 1
+inertia = 1.56
+linear_velocity = Vector2(0, 50)
+linear_damp = 0.2
+angular_velocity = 2.0944
+angular_damp = 0.2
 script = ExtResource("1_wg2c5")
 
-[node name="PelotaFutbol" type="Sprite2D" parent="."]
-position = Vector2(-9.79901, 13.3431)
+[node name="PelotaFutbol" type="Sprite2D" parent="." groups=["Pelota"]]
+position = Vector2(-6.60229, 0.815166)
 rotation = 0.00910248
-scale = Vector2(0.103894, 0.091575)
+scale = Vector2(0.109915, 0.100458)
 texture = ExtResource("1_qpt7b")
+script = ExtResource("3_y56r2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9.79901, 13.3431)
-rotation = 0.00910248
-scale = Vector2(0.103894, 0.091575)
-shape = SubResource("CircleShape2D_rqq0d")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Pelota"]]
+position = Vector2(-5, 2)
+shape = SubResource("CircleShape2D_41gn6")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Pelota"]]
+script = ExtResource("3_ce75w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Pelota"]]
+position = Vector2(-8, 0)
+shape = SubResource("CircleShape2D_3rbc0")
+
+[connection signal="body_entered" from="." to="Area2D" method="_on_pelota_body_entered"]
+[connection signal="body_exited" from="." to="Area2D" method="_on_pelota_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

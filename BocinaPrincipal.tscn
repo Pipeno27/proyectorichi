@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1xsku3q8yjtk"]
+
+[ext_resource type="Script" path="res://bocina_principal.gd" id="1_sliy3"]
+
+[node name="BocinaPincipal" type="AudioStreamPlayer"]
+bus = &"musicaFondo"
+script = ExtResource("1_sliy3")

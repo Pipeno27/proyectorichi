@@ -1,14 +1,26 @@
 extends RigidBody2D
 
-# Variables de configuración
-var fuerza_pateo = 500 # Fuerza adicional cuando se le da una patada
+# Velocidad y dirección inicial
+var speed = 250.0
+var kick_strength = 300
 
 func _ready():
-	# Inicializa la velocidad de la pelota a cero
-	linear_velocity = Vector2.ZERO
+	# Establecemos una dirección inicial aleatoria
+	var initial_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	linear_velocity = initial_direction * speed
 
-func _on_Pelota_body_entered(body):
-	if body.is_in_group("jugador"):
-		# Aplica una fuerza adicional cuando la pelota colisiona con el jugador
-		var direccion = (position - body.position).normalized()
-		apply_impulse(Vector2.ZERO, direccion * fuerza_pateo)
+func _physics_process(delta):
+	# Aquí puedes ajustar la física si es necesario
+	if linear_velocity.length() > 0:
+		linear_velocity = linear_velocity.normalized() * speed
+
+# Función que se llama para aplicar impulso
+func kick(direction: Vector2):
+	# Aplicar impulso en la dirección especificada
+	apply_impulse(Vector2.ZERO, direction * kick_strength)
+
+# Método que maneja las colisiones con jugadores
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Jugadores"):  # Asegúrate de que tus jugadores estén en este grupo
+		var direction = (global_position - body.global_position).normalized()
+		kick(direction)  # Llama a la función kick cuando un jugador golpea la pelota

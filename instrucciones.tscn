@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct3kt24b7mhxw"]
+
+[ext_resource type="Texture2D" uid="uid://btio4lrjpflal" path="res://94FC8BEE-661A-4E38-A15F-D857F59112CA.jpeg" id="1_emmqv"]
+[ext_resource type="Script" path="res://instrucciones.gd" id="1_nwuks"]
+[ext_resource type="Texture2D" uid="uid://b45op1n0puyhx" path="res://Green and Yellow Brazil Carnival  Illustrative Instagram Story.png" id="2_n2nc4"]
+[ext_resource type="FontFile" uid="uid://nlvobu3ay0f1" path="res://GraduateShades.otf" id="3_hkcmg"]
+
+[node name="Instrucciones" type="Node2D"]
+script = ExtResource("1_nwuks")
+
+[node name="94fc8bee-661a-4e38-a15f-d857f59112ca" type="Sprite2D" parent="."]
+position = Vector2(610.25, 327.375)
+scale = Vector2(0.302124, 0.297583)
+texture = ExtResource("1_emmqv")
+
+[node name="GreenAndYellowBrazilCarnivalIllustrativeInstagramStory" type="Sprite2D" parent="."]
+position = Vector2(663, 311.313)
+scale = Vector2(0.553704, 0.327799)
+texture = ExtResource("2_n2nc4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(694, 281)
+zoom = Vector2(1.1, 1.1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
+offset_left = 200.0
+offset_top = 60.0
+offset_right = 250.0
+offset_bottom = 100.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hkcmg")
+theme_override_font_sizes/font_size = 40
+text = "x"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

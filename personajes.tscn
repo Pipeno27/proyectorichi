@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7uajq4vjkyta"]
+
+[ext_resource type="Script" path="res://personajes.gd" id="1_7ahd1"]
+[ext_resource type="PackedScene" uid="uid://dqdk70kl2247g" path="res://mauri.tscn" id="1_mgqws"]
+[ext_resource type="PackedScene" uid="uid://d36jl5ot7yq0e" path="res://character_body_2d.tscn" id="2_ff6d1"]
+[ext_resource type="PackedScene" uid="uid://ddj0esght23pd" path="res://pelota.tscn" id="4_yv7li"]
+
+[node name="Personajes" type="Node2D"]
+script = ExtResource("1_7ahd1")
+
+[node name="Mauri" parent="." instance=ExtResource("1_mgqws")]
+position = Vector2(201, 6)
+
+[node name="Personaje JP" parent="." instance=ExtResource("2_ff6d1")]
+position = Vector2(171, 1)
+
+[node name="Pelota" parent="." instance=ExtResource("4_yv7li")]
+position = Vector2(136, 79)

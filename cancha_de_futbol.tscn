@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=3 uid="uid://dsdae7hwgiy02"]
+
+[ext_resource type="Texture2D" uid="uid://djk726uqmu7a" path="res://cancha futbol.png" id="1_3huwb"]
+[ext_resource type="Script" path="res://cancha_de_futbol.gd" id="1_xs6wt"]
+[ext_resource type="PackedScene" uid="uid://bebo1jblusvnt" path="res://fondo.tscn" id="2_5td45"]
+[ext_resource type="Script" path="res://fondo.gd" id="3_ojfwf"]
+[ext_resource type="PackedScene" uid="uid://4rdekbk8rrts" path="res://static_body_2d.tscn" id="3_q62we"]
+[ext_resource type="PackedScene" uid="uid://d36jl5ot7yq0e" path="res://character_body_2d.tscn" id="9_ael15"]
+[ext_resource type="PackedScene" uid="uid://dqdk70kl2247g" path="res://mauri.tscn" id="10_c6w1s"]
+[ext_resource type="FontFile" uid="uid://nlvobu3ay0f1" path="res://GraduateShades.otf" id="10_tl0fp"]
+[ext_resource type="PackedScene" uid="uid://ddj0esght23pd" path="res://pelota.tscn" id="11_anbbb"]
+[ext_resource type="Script" path="res://button_2.gd" id="11_r6ajv"]
+[ext_resource type="PackedScene" uid="uid://dwgi82sn2kkca" path="res://pausa.tscn" id="12_q6ng4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no13m"]
+size = Vector2(2333.5, 176.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1o4u"]
+size = Vector2(137, 1327.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d73mq"]
+size = Vector2(2311.5, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ln8k"]
+size = Vector2(138.5, 1327)
+
+[node name="CanchaFutbol" type="StaticBody2D" groups=["suelo"]]
+process_mode = 3
+script = ExtResource("1_xs6wt")
+
+[node name="Node2D" parent="." instance=ExtResource("2_5td45")]
+position = Vector2(-41, -542)
+script = ExtResource("3_ojfwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CanchaFutbol" type="Sprite2D" parent="."]
+position = Vector2(51, -145)
+scale = Vector2(2.53043, 2.47126)
+texture = ExtResource("1_3huwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(44.25, 190.75)
+shape = SubResource("RectangleShape2D_no13m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(30, -378)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Arcos" parent="." instance=ExtResource("3_q62we")]
+position = Vector2(6, -80)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1137.5, -402.25)
+shape = SubResource("RectangleShape2D_v1o4u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(37.75, -999)
+shape = SubResource("RectangleShape2D_d73mq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-1060.25, -408.5)
+shape = SubResource("RectangleShape2D_4ln8k")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -1103.0
+offset_top = -1011.0
+offset_right = -1006.0
+offset_bottom = -972.0
+theme_override_fonts/font = ExtResource("10_tl0fp")
+theme_override_font_sizes/font_size = 45
+text = "Salir"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = -1007.0
+offset_top = -1011.0
+offset_right = -907.0
+offset_bottom = -972.0
+theme_override_fonts/font = ExtResource("10_tl0fp")
+theme_override_font_sizes/font_size = 45
+text = "Menu"
+script = ExtResource("11_r6ajv")
+
+[node name="Pausa" parent="." instance=ExtResource("12_q6ng4")]
+
+[node name="Personaje JP" parent="." instance=ExtResource("9_ael15")]
+position = Vector2(-26, -89)
+
+[node name="Mauri" parent="." instance=ExtResource("10_c6w1s")]
+position = Vector2(120, -89)
+
+[node name="Pelota" parent="." instance=ExtResource("11_anbbb")]
+position = Vector2(9, -19)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
